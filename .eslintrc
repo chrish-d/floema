@@ -1,0 +1,10 @@
+{
+  "extends": "galex",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["app"]
+      }
+    }
+  }
+}
