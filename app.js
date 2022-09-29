@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const prismic = require('@prismicio/client');
-const prismicH = require('@prismicio/helpers');
+const Prismic = require('@prismicio/client');
+const PrismicH = require('@prismicio/helpers');
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
@@ -11,7 +11,7 @@ const port = 3000;
 
 // Initialise Prismic API
 const initAPI = (req) => {
-  return prismic.createClient(process.env.PRISMIC_ENDPOINT, {
+  return Prismic.createClient(process.env.PRISMIC_ENDPOINT, {
     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     req,
     fetch,
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     endpoint: process.env.PRISMIC_ENDPOINT,
     linkResolver: handleLinkResolver,
   };
-  res.locals.PrismicH = prismicH;
+  res.locals.PrismicH = PrismicH;
   next();
 });
 
@@ -42,7 +42,7 @@ const handleRequest = async (api) => {
     api.getSingle('metadata'),
     api.getSingle('home'),
     api.getSingle('about'),
-    api.query(prismic.Predicates.at('document.type', 'collection'), {
+    api.query(Prismic.Predicates.at('document.type', 'collection'), {
       fetchLinks: 'product.model',
     }),
   ]);
