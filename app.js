@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const Prismic = require('@prismicio/client');
 const PrismicH = require('@prismicio/helpers');
+const errorHandler = require('errorhandler');
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
@@ -22,6 +23,9 @@ const initAPI = (req) => {
 const handleLinkResolver = (doc) => {
   return '/';
 };
+
+// Middleware to handle errors
+app.use(errorHandler());
 
 // Middleware to inject Prismic context
 app.use((req, res, next) => {
@@ -48,10 +52,6 @@ const handleRequest = async (api) => {
   ]);
 
   const assets = [];
-
-  // home.data.gallery.forEach((item) => {
-  //   assets.push(item.image.url);
-  // });
 
   about.data.body.forEach((section) => {
     if (section.slice_type === 'gallery') {
@@ -107,6 +107,8 @@ app.get('/detail/:uid', async (req, res) => {
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collection.title',
   });
+
+  console.log(product);
 
   res.render('pages/detail', {
     ...defaults,
