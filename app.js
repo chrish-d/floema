@@ -6,6 +6,7 @@ const errorHandler = require('errorhandler');
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
+const { ToWords } = require('to-words');
 
 const app = express();
 const port = 3000;
@@ -33,7 +34,13 @@ app.use((req, res, next) => {
     endpoint: process.env.PRISMIC_ENDPOINT,
     linkResolver: handleLinkResolver,
   };
+
   res.locals.PrismicH = PrismicH;
+
+  res.locals.toWords = (index) => {
+    return new ToWords().convert(index);
+  };
+
   next();
 });
 
@@ -95,6 +102,7 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
+  console.log(defaults.home);
   res.render('pages/collections', {
     ...defaults,
   });
@@ -107,8 +115,6 @@ app.get('/detail/:uid', async (req, res) => {
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collection.title',
   });
-
-  console.log(product);
 
   res.render('pages/detail', {
     ...defaults,
