@@ -102,7 +102,6 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
-  console.log(defaults.home);
   res.render('pages/collections', {
     ...defaults,
   });
@@ -123,5 +122,6 @@ app.get('/detail/:uid', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  // eslint-disable-next-line no-console
+  console.log(`App listening at http://localhost:${port}`);
 });
