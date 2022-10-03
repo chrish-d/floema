@@ -2,8 +2,11 @@ require('dotenv').config();
 
 const Prismic = require('@prismicio/client');
 const PrismicH = require('@prismicio/helpers');
+const bodyParser = require('body-parser');
 const errorHandler = require('errorhandler');
 const express = require('express');
+const methodOverride = require('method-override');
+const logger = require('morgan');
 const fetch = require('node-fetch');
 const path = require('path');
 const { ToWords } = require('to-words');
@@ -26,7 +29,11 @@ const handleLinkResolver = (doc) => {
 };
 
 // Middleware to handle errors
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(errorHandler());
+app.use(methodOverride());
 
 // Middleware to inject Prismic context
 app.use((req, res, next) => {
@@ -49,14 +56,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.locals.baseDir = app.get('views');
 
 const handleRequest = async (api) => {
-  const [metadata, home, about, { results: collections }] = await Promise.all([
-    api.getSingle('metadata'),
-    api.getSingle('home'),
-    api.getSingle('about'),
-    api.query(Prismic.Predicates.at('document.type', 'collection'), {
-      fetchLinks: 'product.model',
-    }),
-  ]);
+  const [metadata, preloader, home, about, { results: collections }] =
+    await Promise.all([
+      api.getSingle('metadata'),
+      api.getSingle('preloader'),
+      api.getSingle('home'),
+      api.getSingle('about'),
+      api.query(Prismic.Predicates.at('document.type', 'collection'), {
+        fetchLinks: 'product.model',
+      }),
+    ]);
 
   const assets = [];
 
@@ -77,6 +86,7 @@ const handleRequest = async (api) => {
   return {
     assets,
     metadata,
+    preloader,
     home,
     collections,
     about,
