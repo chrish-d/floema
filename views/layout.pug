@@ -4,19 +4,21 @@ doctype html
 html.no-js(lang='en')
   head
     meta(charset='utf-8')
-    title Boilerplate
-    meta(name='description', content='')
+    title= metadata.data.title
+    meta(name='description', content=metadata.data.description)
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
-    meta(property='og:title', content='')
-    meta(property='og:type', content='')
-    meta(property='og:url', content='')
-    meta(property='og:image', content='')
+    meta(property='og:title', content=metadata.data.title)
+    meta(property='og:type', content='website')
+    meta(
+      property='og:image',
+      content=metadata.data.image ? metadata.data.image.url : ''
+    )
 
-    meta(property='twitter:title', content='')
+    meta(property='twitter:title', content=metadata.data.title)
     meta(property='twitter:card', content='summary_large_image')
-    meta(property='twitter:description', content='')
-    meta(property='twitter:image', content='')
+    meta(property='twitter:description', content=metadata.data.description)
+    meta(property='twitter:image', content=metadata.data.image || '')
 
     link(rel='icon', href='/favicon.ico', sizes='many')
     link(rel='icon', href='/icon.svg', type='image/svg+xml')
