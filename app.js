@@ -25,7 +25,15 @@ const initAPI = (req) => {
 
 // Link resolver
 const handleLinkResolver = (doc) => {
-  return '/';
+  if (doc.link_type === 'Web') {
+    return doc.url;
+  }
+
+  if (doc.type === 'product') {
+    return `/detail/${doc.slug}`;
+  }
+
+  return `/${doc.slug}`;
 };
 
 // Middleware to handle errors
@@ -39,10 +47,10 @@ app.use(methodOverride());
 app.use((req, res, next) => {
   res.locals.ctx = {
     endpoint: process.env.PRISMIC_ENDPOINT,
-    linkResolver: handleLinkResolver,
   };
 
   res.locals.PrismicH = PrismicH;
+  res.locals.linkResolver = handleLinkResolver;
 
   res.locals.toWords = (index) => {
     return new ToWords().convert(index);
@@ -56,16 +64,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.locals.baseDir = app.get('views');
 
 const handleRequest = async (api) => {
-  const [metadata, preloader, home, about, { results: collections }] =
-    await Promise.all([
-      api.getSingle('metadata'),
-      api.getSingle('preloader'),
-      api.getSingle('home'),
-      api.getSingle('about'),
-      api.query(Prismic.Predicates.at('document.type', 'collection'), {
-        fetchLinks: 'product.model',
-      }),
-    ]);
+  const [
+    metadata,
+    preloader,
+    navigation,
+    home,
+    about,
+    { results: collections },
+  ] = await Promise.all([
+    api.getSingle('metadata'),
+    api.getSingle('preloader'),
+    api.getSingle('navigation'),
+    api.getSingle('home'),
+    api.getSingle('about'),
+    api.query(Prismic.Predicates.at('document.type', 'collection'), {
+      fetchLinks: 'product.model',
+    }),
+  ]);
 
   const assets = [];
 
@@ -87,6 +102,7 @@ const handleRequest = async (api) => {
     assets,
     metadata,
     preloader,
+    navigation,
     home,
     collections,
     about,
@@ -96,6 +112,9 @@ const handleRequest = async (api) => {
 app.get('/', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
+
+  console.log(defaults.metadata);
+
   res.render('pages/home', {
     ...defaults,
   });
@@ -112,6 +131,7 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
+
   res.render('pages/collections', {
     ...defaults,
   });
