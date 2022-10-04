@@ -43,6 +43,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(errorHandler());
 app.use(methodOverride());
 
+// Include static files from public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Middleware to inject Prismic context
 app.use((req, res, next) => {
   res.locals.ctx = {
