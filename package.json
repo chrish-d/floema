@@ -25,6 +25,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
+    "include-media": "^1.4.10",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
     "prettier": "^2.7.1",
