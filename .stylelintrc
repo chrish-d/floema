@@ -1,5 +1,8 @@
 {
-  "extends": ["@wemake-services/stylelint-config-scss"],
+  "extends": [
+    "@wemake-services/stylelint-config-scss",
+    "stylelint-config-property-sort-order-smacss"
+  ],
   "rules": {
     "scale-unlimited/declaration-strict-value": 0,
     "block-no-empty": null,

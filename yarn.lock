@@ -1913,6 +1913,11 @@ css-loader@^6.7.1:
     postcss-value-parser "^4.2.0"
     semver "^7.3.5"
 
+css-property-sort-order-smacss@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/css-property-sort-order-smacss/-/css-property-sort-order-smacss-2.2.0.tgz#c2cb4741e5580fe2f6d968ccde0946e8b689033c"
+  integrity sha512-nXutswsivIEBOrPo/OZw2KQjFPLvtg68aovJf6Kqrm3L6FmTvvFPaeDrk83hh0+pRJGuP3PeKJwMS0E6DFipdQ==
+
 css-shorthand-properties@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/css-shorthand-properties/-/css-shorthand-properties-1.1.1.tgz#1c808e63553c283f289f2dd56fcee8f3337bd935"
@@ -6453,6 +6458,14 @@ stylelint-color-format@^1.1.0:
   dependencies:
     color "^3.0.0"
     style-search "^0.1.0"
+
+stylelint-config-property-sort-order-smacss@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-property-sort-order-smacss/-/stylelint-config-property-sort-order-smacss-9.0.0.tgz#2916751f0bf8793d3735429900599b44fdb9d785"
+  integrity sha512-jQ1miJ6uQA+n6UkunhdhBmjFd5XCe/X7l9/yBI2KGdU+8+nYt1/7slHeLvsT7SCYByYqaLt9fUUCCOjyXH6PCw==
+  dependencies:
+    css-property-sort-order-smacss "~2.2.0"
+    stylelint-order "^5.0.0"
 
 stylelint-config-recommended-scss@^5.0.2:
   version "5.0.2"
