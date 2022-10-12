@@ -2,10 +2,14 @@
 @import './utils/functions';
 @import './utils/mixins';
 @import './utils/vendors';
+@import './utils/responsive';
 
 @import './base/reset';
 @import './base/fonts';
 @import './base/base';
+
+@import './shared/titles';
+@import './shared/descriptions';
 
 @import './pages/about/about';
 @import './pages/about/content';
