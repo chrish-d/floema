@@ -1,0 +1,8 @@
+{
+  "extends": ["@wemake-services/stylelint-config-scss"],
+  "rules": {
+    "scale-unlimited/declaration-strict-value": 0,
+    "block-no-empty": null,
+    "selector-class-pattern": null
+  }
+}
