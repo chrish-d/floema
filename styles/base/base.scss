@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+  font-size: calc((100vw / 1920) * 10);
 }
 
 body {
