@@ -1,9 +1,39 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 html {
-  font-size: calc((100vw / 1920) * 10);
+  $vw: 100vw;
+
+  font-size: calc($vw / 1920px * 10px);
+
+  @include media('<phone') {
+    font-size: calc($vw / 750px * 10px);
+  }
 }
 
 body {
   @extend %description-16;
 
   font-family: $font-suisse-bp;
+}
+
+a {
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  vertical-align: middle;
 }

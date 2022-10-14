@@ -1,10 +1,10 @@
 .preloader {
   @extend %cover;
+  @extend %center;
 
   display: none;
-  align-items: center;
-  justify-content: center;
-  background-color: $color-contesa;
+  z-index: z($name: 'preloader');
+  background: $color-contessa;
   color: $color-white;
   text-align: center;
 }
@@ -13,14 +13,17 @@
   @extend %title-53;
 
   max-width: 66rem;
-  font-weight: 400;
 }
 
 .preloader__number {
   @extend %description-14;
 
   position: absolute;
-  bottom: 7.3rem;
+  bottom: 5.1rem;
   left: 50%;
   transform: translateX(-50%);
+
+  @include media('<phone') {
+    font-size: 2.5rem;
+  }
 }

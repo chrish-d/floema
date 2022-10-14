@@ -1,10 +1,12 @@
-$color-black: rgb(0, 0, 0);
-$color-white: rgb(255, 255, 255);
-$color-contesa: rgb(201, 113, 100);
+$color-white: rgb(249, 241, 231);
+$color-contessa: rgb(201, 113, 100);
+$color-quicksand: rgb(188, 151, 140);
+$color-cadet-blue: rgb(178, 184, 195);
+$color-bright-grey: rgb(55, 56, 76);
 
 $font-george-x: 'George X';
 $font-suisse-bp: 'Suisse BP';
 
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-$z-indexes: ('navigation', 'content');
+$z-indexes: ('preloader', 'navigation', 'content');

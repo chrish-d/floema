@@ -25,15 +25,20 @@ const initAPI = (req) => {
 
 // Link resolver
 const handleLinkResolver = (doc) => {
-  if (doc.link_type === 'Web') {
-    return doc.url;
-  }
-
   if (doc.type === 'product') {
     return `/detail/${doc.slug}`;
   }
 
-  return `/${doc.slug}`;
+  if (doc.type === 'collections') {
+    return '/collections';
+  }
+
+  if (doc.type === 'about') {
+    return `/about`;
+  }
+
+  // Default to homepage
+  return '/';
 };
 
 // Middleware to handle errors
@@ -116,7 +121,7 @@ app.get('/', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
 
-  console.log(defaults.metadata);
+  console.log(defaults.home);
 
   res.render('pages/home', {
     ...defaults,
