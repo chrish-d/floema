@@ -8,6 +8,7 @@
     "selector-class-pattern": null,
     "scss/at-mixin-named-arguments": null,
     "scss/percent-placeholder-pattern": null,
-    "plugin/stylelint-no-indistinguishable-colors": null
+    "plugin/stylelint-no-indistinguishable-colors": null,
+    "csstree/validator": null
   }
 }

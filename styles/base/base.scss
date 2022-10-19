@@ -2,12 +2,20 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  user-select: none;
 }
 
 html {
   $vw: 100vw;
 
+  @extend %cover;
+
+  position: fixed;
+  overflow: hidden;
+  background: $color-contessa;
+  color: $color-white;
   font-size: calc($vw / 1920px * 10px);
+  line-height: 1;
 
   @include media('<phone') {
     font-size: calc($vw / 750px * 10px);
@@ -15,8 +23,10 @@ html {
 }
 
 body {
+  @extend %cover;
   @extend %description-16;
 
+  position: fixed;
   font-family: $font-suisse-bp;
 }
 
@@ -35,5 +45,32 @@ button {
 }
 
 img {
+  transition: opacity 0.4s ease;
+  opacity: 0;
   vertical-align: middle;
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+canvas {
+  position: relative;
+  z-index: z($name: 'canvas');
+  pointer-events: none;
+}
+
+.content {
+  @extend %cover;
+}
+
+[data-animation='paragraph'],
+[data-animation='label'],
+[data-animation='title'] {
+  /* stylelint-disable-next-line plugin/selector-tag-no-without-class */
+  span {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
 }

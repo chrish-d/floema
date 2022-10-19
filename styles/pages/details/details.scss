@@ -1,9 +1,9 @@
 .detail {
-  @extend %cover;
+  @extend %page;
   @extend %center;
 
-  background-color: $color-quicksand;
-  color: $color-white;
+  // background-color: $color-quicksand;
+  // color: $color-white;
 
   @include media('<phone') {
     height: auto;
@@ -86,6 +86,7 @@
   width: 4rem;
   height: 4rem;
   margin-right: 3.75rem;
+  border: 1px solid rgb(230, 230, 230);
   border-radius: 50%;
 
   @include media('<phone') {

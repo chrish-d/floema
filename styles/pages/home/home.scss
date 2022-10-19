@@ -1,10 +1,11 @@
 .home {
   @extend %center;
-  @extend %cover;
+  @extend %page;
+
+  // background: $color-contessa;
+  // color: $color-white;
 
   overflow: hidden;
-  background: $color-contessa;
-  color: $color-white;
   text-align: center;
 
   &::before,
@@ -58,10 +59,123 @@
   @extend %cover;
 
   visibility: hidden;
+  width: calc(241.8rem + 9rem);
+  height: 172.5rem;
 }
 
 .home__gallery__media {
   position: absolute;
+
+  &:nth-child(1) {
+    top: 16.6rem;
+    left: 9.4rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(2) {
+    top: 19.4rem;
+    left: 54rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(3) {
+    top: 10.9rem;
+    left: 106.3rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(4) {
+    top: 0;
+    left: 154.1rem;
+    width: 40.6rem;
+    height: 60.8rem;
+  }
+
+  &:nth-child(5) {
+    top: 10.6rem;
+    left: 207rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(6) {
+    top: 69.3rem;
+    left: 0;
+    width: 37.5rem;
+    height: 52.3rem;
+  }
+
+  &:nth-child(7) {
+    top: 66.4rem;
+    left: 46.7rem;
+    width: 40.6rem;
+    height: 60.8rem;
+  }
+
+  &:nth-child(8) {
+    top: 64.9rem;
+    left: 101.4rem;
+    width: 39.7rem;
+    height: 58.2rem;
+  }
+
+  &:nth-child(9) {
+    top: 64rem;
+    left: 160rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(10) {
+    top: 64.9rem;
+    left: 202.1rem;
+    width: 39.7rem;
+    height: 58.2rem;
+  }
+
+  &:nth-child(11) {
+    top: 129.1rem;
+    left: 13rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(12) {
+    top: 130.6rem;
+    left: 54rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(13) {
+    top: 128.8rem;
+    left: 105.7rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(14) {
+    top: 111.1rem;
+    left: 163.9rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+
+  &:nth-child(15) {
+    top: 128.8rem;
+    left: 206.3rem;
+    width: 27.8rem;
+    height: 41.8rem;
+  }
+}
+
+.home__gallery__media__image {
+  @extend %cover;
+
+  opacity: 1;
 }
 
 .home__link {
