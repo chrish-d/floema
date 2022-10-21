@@ -1,5 +1,6 @@
 {
   "extends": "galex",
+  "browser": true,
   "settings": {
     "import/resolver": {
       "node": {
