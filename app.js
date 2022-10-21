@@ -121,8 +121,6 @@ app.get('/', async (req, res) => {
   const api = await initAPI(req);
   const defaults = await handleRequest(api);
 
-  console.log(defaults.home);
-
   res.render('pages/home', {
     ...defaults,
   });
