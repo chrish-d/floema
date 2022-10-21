@@ -1,5 +1,5 @@
 .preloader {
-  @extend %cover;
+  // @extend %cover;
   @extend %center;
 
   z-index: z($name: 'preloader');
