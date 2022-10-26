@@ -22,7 +22,7 @@ block content
 
               figure.about__content__media
                 img.about__content__media__image(
-                  src=section.primary.image.url,
+                  data-src=section.primary.image.url,
                   alt=section.primary.image.alt
                 )
 
@@ -37,7 +37,7 @@ block content
               each media in section.items
                 figure.about__highlight__media
                   img.about__highlight__media__image(
-                    src=media.image.url,
+                    data-src=media.image.url,
                     alt=media.image.alt
                   )
 
@@ -47,6 +47,6 @@ block content
               each media in section.items
                 figure.about__gallery__media
                   img.about__gallery__media__image(
-                    src=media.image.url,
+                    data-src=media.image.url,
                     alt=media.image.alt
                   )

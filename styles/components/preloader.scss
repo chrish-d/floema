@@ -1,5 +1,5 @@
 .preloader {
-  // @extend %cover;
+  @extend %cover;
   @extend %center;
 
   z-index: z($name: 'preloader');
@@ -16,7 +16,7 @@
     display: inline-block;
     overflow: hidden;
 
-    & span {
+    span {
       @extend %title-53;
     }
   }
